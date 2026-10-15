@@ -193,6 +193,7 @@ export function createShell(cfg, io) {
           "TLS everywhere, HSTS, secure cookies, sane CSP",
           "Dependencies audited, abandoned packages replaced",
           "Backups encrypted, and a restore actually tested",
+          "Config web server to disable script execution on upload folder",
         ];
         return (
           items.map((i) => `<div><span class="ok">[ CHECK ]</span> ${esc(i)}</div>`).join("") +
