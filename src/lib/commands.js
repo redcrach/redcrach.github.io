@@ -81,7 +81,7 @@ export function createShell(cfg, io) {
     },
 
     skills: {
-      d: "skills [--backend|--frontend|--devops|--security|--sysadmin]",
+      d: "skills [--backend|--frontend|--data|--devops|--security|--sysadmin]",
       run: (args) => {
         const flag = (args[0] || "").replace(/^-+/, "");
         if (flag && !cfg.skills[flag])

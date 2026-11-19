@@ -8,4 +8,8 @@ console.log(
   "color:inherit"
 );
 
-mount(App, { target: document.getElementById("app") });
+// index.html ships a prerendered copy of the page for crawlers and no-JS visitors.
+// Svelte renders the same markup, so swap it out before mounting.
+const target = document.getElementById("app");
+target.textContent = "";
+mount(App, { target });

@@ -4,14 +4,21 @@
 export const config = {
   name: "Taibouni Abdel Hafid",
   handle: "redcrach",
-  role: "Senior Fullstack · Laravel & PHP Engineer · Web Security · DevOps",
+  role: "Senior Full-Stack Engineer · Laravel & PHP · Vue · Databases · DevOps",
+  // One line under the name on the page. Plain words, no jargon.
+  tagline:
+    "I rescue slow legacy PHP, rebuild it in Laravel, and own everything around it: the Vue and Svelte front ends, the databases, and the servers they run on.",
+  // Every "Book a call" button points here.
+  booking: "https://calendar.app.google/KDbTzS8DJP4iwWpV7",
+  // Optional: drop a PDF in /public (e.g. public/cv.pdf) and set "./cv.pdf" to show a CV button.
+  cv: "",
   location: "Remote from Algeria · UTC+1, CET-aligned",
   since: 2011,
   available: "Yes, taking new projects (30+ hrs/week)",
   languages: "Arabic (native) · English (fluent, daily at work) · French & German (basic)",
 
   summary:
-    "Senior Fullstack developer and PHP backend engineer with 15+ years in production. My specialty is legacy PHP modernization: I dig into unfamiliar codebases with a security researcher's mindset, find out how they really work, then refactor them into clean Laravel step by step without stopping the business. I also own the deployment, with Laravel Forge, Cloudflare and Docker.",
+    "Senior Fullstack developer and PHP backend engineer with 15+ years in production. My specialty is legacy PHP modernization: I dig into unfamiliar codebases with a security researcher's mindset, find out how they really work, then refactor them into clean Laravel step by step without stopping the business. Lately that has meant going deep on data: SingleStore and PostgreSQL with TimescaleDB for heavy analytics, plus Vue 3 on the front end. I also own the infrastructure: Docker, Forge, Cloudflare, Linux, monitoring and backups.",
 
   upwork: {
     badge: "Top Rated",
@@ -36,19 +43,25 @@ export const config = {
       ["Filament & Livewire", 5, "admin panels, the ERP cockpit"],
       ["Queues & real-time", 5, "jobs, Laravel Reverb, WebSockets, broadcasting"],
       ["REST APIs & OAuth", 5, "couriers, payments, Google, Forge/Vercel/Cloudflare APIs"],
-      ["MySQL / MariaDB / Redis", 5, "query optimization, indexing, caching"],
     ],
     frontend: [
       ["TALL stack", 5, "Tailwind, Alpine.js, Laravel, Livewire"],
       ["Svelte", 4, "Caliber v2 front end, this site"],
       ["Next.js", 4, "storefront platform at 100K requests/day"],
-      ["Vue.js", 4, ""],
+      ["Vue 3", 4, "current focus: components, reactivity, state; Vue 2 shipped earlier"],
       ["Blade & JavaScript", 5, ""],
+    ],
+    data: [
+      ["MySQL / MariaDB", 5, "query plans, indexing, upserts, 130 → 32 queries per request"],
+      ["SingleStore", 4, "heavy aggregations over millions of rows at Caliber"],
+      ["PostgreSQL + TimescaleDB", 3, "time-series workloads: hypertables, aggregates (proof of concept at Caliber)"],
+      ["Redis", 5, "caching, queues, rate limiting"],
+      ["Backups & recovery", 5, "recovered a corrupted InnoDB production database"],
     ],
     devops: [
       ["Laravel Forge", 5, "provisioning driven by code, not clicks"],
       ["Cloudflare", 5, "DNS, proxying, SSL, edge"],
-      ["Docker & Compose", 4, ""],
+      ["Docker & Compose", 4, "containerized dev and production stacks"],
       ["Nginx & Linux", 5, "load balancing, monitoring"],
       ["CI/CD & zero-touch deploys", 5, "physical servers, VPS and cloud"],
       ["AWS & Vercel", 4, ""],
@@ -64,7 +77,7 @@ export const config = {
       ["Linux administration", 5, "ran Orestor's production fleet"],
       ["Hardening", 5, "servers and apps, since the freelance years"],
       ["Apache / .htaccess", 5, ""],
-      ["Uptime & monitoring", 5, "100% uptime on ZimouExpress"],
+      ["Uptime & monitoring", 5, "100% uptime on ZimouExpress · Forge, Bugsnag, Nightwatch"],
     ],
     workflow: [
       ["Git & code review", 5, "set review standards as CTO"],
@@ -91,6 +104,22 @@ export const config = {
       stack: ["Laravel", "Svelte", "MySQL", "Caching", "Refactoring"],
     },
     {
+      id: "caliber-data",
+      title: "Analytics at scale: SingleStore, PostgreSQL and TimescaleDB",
+      client: "Group Caliber ApS · brand & reputation tracking SaaS",
+      // TODO: add 1–2 real numbers here (rows, query time before/after, cost) and confirm the wording.
+      problem:
+        "Reporting meant large aggregations over millions of rows, and a classic MySQL setup was the wrong tool for that kind of load.",
+      did:
+        "Ran analytics workloads on SingleStore in production, tuned the heavy aggregation queries and the import paths that feed them, and ran a PostgreSQL + TimescaleDB proof of concept for the time-series side (hypertables and pre-computed aggregates).",
+      result: [
+        "Heavy aggregations moved off the transactional database",
+        "Large imports from stores and spreadsheets into analytics tables",
+        "Data-driven choice between SingleStore and Postgres + TimescaleDB",
+      ],
+      stack: ["SingleStore", "PostgreSQL", "TimescaleDB", "MySQL", "Laravel"],
+    },
+    {
       id: "erp-cockpit",
       title: "The cockpit: one click, one new ERP client",
       client: "ZimouGroup · CTO & shareholder · Sep 2023 – Jul 2026",
@@ -104,6 +133,22 @@ export const config = {
         "Product later became Yalidine's Aventy",
       ],
       stack: ["Laravel", "Filament", "Queues", "Forge API", "Cloudflare API", "Vercel API", "OAuth"],
+    },
+    {
+      id: "infra",
+      title: "Production infrastructure, owned end to end",
+      client: "ZimouGroup · Orestor · Group Caliber",
+      // TODO: add your Docker specifics (what runs in containers, CI tool, number of servers).
+      problem:
+        "Small teams running real traffic, with nobody whose full-time job was the servers.",
+      did:
+        "Containerized dev and production stacks with Docker and Compose. Set up zero-downtime deploys through Forge and CI, Cloudflare in front of everything, and monitoring with Bugsnag and Nightwatch. After the ZimouExpress incident, moved the database to its own server with a read/write replica. At Orestor, ran load-balanced Linux servers across physical machines, VPS and cloud.",
+      result: [
+        "100% uptime on ZimouExpress at 1,000+ parcels a day",
+        "Dedicated database server with a replica",
+        "Zero-touch deploys on any infrastructure",
+      ],
+      stack: ["Docker", "Compose", "Laravel Forge", "Cloudflare", "Nginx", "Linux", "CI/CD", "Bugsnag", "Nightwatch"],
     },
     {
       id: "erp-queues",
@@ -154,6 +199,71 @@ export const config = {
   reviews: [
     ["Henrik B., client", "Hafid is very skilled in PHP, backend development and Laravel. He tackles tasks with a great attitude and mind set. He helped us refactor and optimize on an existing PHP backend, and not only did he do the tasks appointed, he also identified other areas to improve on both security, performance and maintainability."],
     ["Client", "Taibouni was enormously helpful to us in uncovering issues in our setup and code and assisted us onto the right path to resolution. He was professional and courteous at all times and his experience was evident in the final work!"],
+  ],
+
+  // ── Page-only content (the scroll view). The terminal ignores these. ──
+
+  stats: [
+    ["~70%", "faster legacy survey engine", "35s → 11s at Group Caliber"],
+    ["130 → 32", "database queries per request", "grouped lookups, upserts, caching"],
+    ["100%", "uptime on ZimouExpress", "1,000+ parcels a day across Algeria"],
+    ["100K", "storefront requests a day", "at near-zero hosting cost"],
+    ["6–10", "developers led as CTO", "daily PR reviews across 2–3 repos"],
+    ["15+", "years in production", "PHP since 2012, security since 2011"],
+    // TODO: add your best SingleStore / TimescaleDB number here, e.g.
+    // ["12s → 0.4s", "dashboard aggregation", "SingleStore at Caliber"],
+  ],
+
+  skillCards: [
+    {
+      title: "Backend",
+      text: "PHP 8 and Laravel since 2012. I modernize legacy PHP without stopping the business.",
+      tags: ["Laravel", "PHP 8", "Filament", "Livewire", "REST APIs", "OAuth", "Queues", "Reverb"],
+    },
+    {
+      title: "Frontend",
+      text: "Vue 3 is my current focus, next to Svelte (Caliber v2, this site) and React/Next.js (storefronts).",
+      tags: ["Vue 3", "Svelte 5", "React / Next.js", "Alpine.js", "Tailwind", "Drag & drop UIs"],
+    },
+    {
+      title: "Data & performance",
+      text: "From query plans and indexes to choosing the right engine for analytics.",
+      tags: ["MySQL", "SingleStore", "PostgreSQL", "TimescaleDB", "Redis", "Indexing", "Caching", "Imports"],
+    },
+    {
+      title: "Infrastructure & DevOps",
+      text: "I set up the servers, the deploys and the monitoring, and I get paged when they break.",
+      tags: ["Docker", "Compose", "Laravel Forge", "Cloudflare", "Nginx", "Linux", "CI/CD", "AWS", "Vercel"],
+    },
+    {
+      title: "Leadership",
+      text: "Former CTO of 6–10 developers. I split big problems so people can build in parallel, and still write the hard code.",
+      tags: ["Code review", "Architecture", "Hiring", "Mentoring", "Remote / async"],
+    },
+    {
+      title: "Security",
+      text: "CTF player and Root-Me challenge author. I review every PR the way an attacker would read it.",
+      tags: ["Secure code review", "OWASP", "Turnstile / anti-bot", "Hardening", "Pentesting"],
+    },
+  ],
+
+  incident: {
+    title: "The day the database died",
+    story: [
+      "Mid-afternoon on a busy day at ZimouExpress, thousands of parcels were being created, and the server went dark: the hosting bill had gone unpaid and the provider cut it off.",
+      "When it came back, MySQL would not stay up. The InnoDB files were corrupted, and a forced-recovery restart failed.",
+      "I moved the damaged production files aside, started MySQL on an empty database with the same name and structure, ran the repair, and swapped the original files back in at the right moment. The data came back.",
+    ],
+    after:
+      "Afterwards the database got its own server with a read/write replica, and monitoring through Forge, Bugsnag and Nightwatch. That night is why ZimouGroup hired me.",
+  },
+
+  faq: [
+    ["Where are you based, and what hours do you work?", "Algeria, UTC+1, aligned with CET. I spent five years inside a Denmark-based team on CET hours, fully remote."],
+    ["Full-time or contract?", "Both. I'm open to full-time remote roles and to contract work, from a short audit to owning a product's backend."],
+    ["How do you take over a codebase you didn't write?", "Read it the way an attacker would: config, secrets, auth, queries, uploads, servers. Then fix what's dangerous first and refactor in small steps that ship, so the business never stops. Type audit in the terminal for my checklist."],
+    ["How do you use AI in your work?", "I use Claude Code every day. Everything it writes gets reviewed and tested by me before it ships."],
+    ["Why is there a terminal?", "I started in security and CTFs in 2011, and old habits stay. There's also a hidden flag in there for the curious."],
   ],
 
   ctf: {
