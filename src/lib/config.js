@@ -27,10 +27,10 @@ export const config = {
     reviews: 25,
   },
 
-  email: "taibounihafid@gmail.com",
+  email: "hafid@taibouni.dev",
   links: {
     GitHub: "https://github.com/redcrach",
-    LinkedIn: "https://www.linkedin.com/in/taibouni-abdel-hafid-6533591a3/",
+    LinkedIn: "https://www.linkedin.com/in/taibouni-abdel-hafid/",
     Upwork: "https://www.upwork.com/freelancers/~017f211aaf6fc6695a",
     "Root-Me": "https://www.root-me.org/RedCrach",
     Blog: "https://blindp0wn3rs.wordpress.com/",
