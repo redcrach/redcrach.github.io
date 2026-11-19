@@ -29,7 +29,7 @@ export const CHIPS = [
 
 /**
  * @param {object} cfg  the config from config.js
- * @param {{ print(html: string): { append(html: string): void }, clear(): void, reduce?: boolean }} io
+ * @param {{ print(html: string): { append(html: string): void }, clear(): void, reduce?: boolean, exit?: () => void }} io
  */
 export function createShell(cfg, io) {
   const user = `guest@${cfg.handle}`;
@@ -301,7 +301,14 @@ export function createShell(cfg, io) {
           ? `<span class="ok">[sudo] access granted.</span> Good call.` + commands.contact.run()
           : `<span class="warn">${esc(user)} is not in the sudoers file.</span> This incident will be reported. <span class="muted">(try: sudo hire-me)</span>`,
     },
-    exit: { hidden: true, run: () => `There's no exit. Try <span class="amber">contact</span> instead.` },
+    exit: {
+      hidden: true,
+      run: () => {
+        if (!io.exit) return `There's no exit. Try <span class="amber">contact</span> instead.`;
+        setTimeout(io.exit, io.reduce ? 0 : 350);
+        return `<span class="muted">logout</span>`;
+      },
+    },
     rm: { hidden: true, run: () => `<span class="warn">Nice try.</span> The backups are tested.` },
   };
 
@@ -343,7 +350,8 @@ export function createShell(cfg, io) {
     io.print(`<span class="muted">Last login: ${new Date().toDateString()} on ttys001</span>`);
     run("whoami");
     io.print(
-      `<span class="muted">Type</span> <span class="amber">help</span> <span class="muted">or tap a command below. Start with</span> <span class="amber">provision</span><span class="muted">, or try</span> <span class="amber">ctf</span> <span class="muted">if you like puzzles.</span>`
+      `<span class="muted">Type</span> <span class="amber">help</span> <span class="muted">or tap a command below. Start with</span> <span class="amber">provision</span><span class="muted">, or try</span> <span class="amber">ctf</span> <span class="muted">if you like puzzles.</span>` +
+        (io.exit ? ` <span class="muted">Esc minimizes,</span> <span class="amber">exit</span> <span class="muted">closes.</span>` : "")
     );
     history.length = 0;
     hIdx = 0;

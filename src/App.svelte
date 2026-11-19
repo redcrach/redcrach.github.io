@@ -5,65 +5,130 @@
   import { config } from "./lib/config.js";
   import { renderHome } from "./lib/home.js";
 
-  // Two views of the same config: the scroll page (default) and the terminal.
-  // The terminal lives at #terminal, and the backtick key toggles it.
+  // The scroll page is the "desktop". The terminal opens as a window on top of it.
+  // win: "closed" (not mounted) · "open" · "min" (mounted but hidden, keeps its history)
   const home = renderHome(config);
-  const isTerminalHash = () => location.hash === "#terminal";
+  const TERM_HASH = "#terminal";
 
-  let view = $state(isTerminalHash() ? "terminal" : "page");
+  let win = $state("closed");
+  let maximized = $state(false);
+  let pos = $state({ x: 0, y: 0 });
   let terminal = $state();
+  let winEl = $state();
 
-  async function show(next) {
-    if (next === view) return;
-    view = next;
-    if (next === "terminal") history.pushState(null, "", "#terminal");
-    else history.pushState(null, "", location.pathname + location.search);
+  const setHash = (on) => {
+    const url = on ? TERM_HASH : location.pathname + location.search;
+    if ((location.hash === TERM_HASH) !== on) history.replaceState(null, "", url);
+  };
+
+  async function openTerminal() {
+    if (win === "closed") pos = { x: 0, y: 0 };
+    win = "open";
+    setHash(true);
     await tick();
-    window.scrollTo(0, 0);
+    terminal?.focus();
   }
 
-  function handleClick(e) {
-    const btn = e.target.closest("[data-view]");
-    if (btn) show(btn.dataset.view);
+  function minimize() {
+    win = "min";
+    setHash(false);
+  }
+
+  function close() {
+    win = "closed";
+    maximized = false;
+    setHash(false);
+  }
+
+  function toggleMax() {
+    maximized = !maximized;
+  }
+
+  // Drag the window by its title bar (desktop only, not when maximized).
+  function dragStart(e) {
+    if (maximized || e.button !== 0 || e.target.closest("button")) return;
+    if (!matchMedia("(min-width: 761px)").matches || !winEl) return;
+    e.preventDefault();
+    const r = winEl.getBoundingClientRect();
+    const start = { cx: e.clientX, cy: e.clientY, x: pos.x, y: pos.y };
+    const move = (ev) => {
+      const left = Math.min(Math.max(r.left + ev.clientX - start.cx, 120 - r.width), innerWidth - 120);
+      const top = Math.min(Math.max(r.top + ev.clientY - start.cy, 0), innerHeight - 48);
+      pos = { x: start.x + left - r.left, y: start.y + top - r.top };
+    };
+    const up = () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+  }
+
+  function handlePageClick(e) {
+    if (e.target.closest('[data-view="terminal"]')) openTerminal();
   }
 
   onMount(() => {
-    const sync = () => {
-      if (isTerminalHash()) view = "terminal";
-      else if (view === "terminal") view = "page";
-    };
+    if (location.hash === TERM_HASH) openTerminal();
+    const onHash = () => location.hash === TERM_HASH && openTerminal();
     const onKey = (e) => {
+      if (e.key === "Escape" && win === "open") {
+        minimize();
+        return;
+      }
       if (e.key !== "`" || e.ctrlKey || e.metaKey || e.altKey) return;
       if (e.target.closest?.("input, textarea, [contenteditable]")) return;
       e.preventDefault();
-      show(view === "terminal" ? "page" : "terminal");
+      win === "open" ? minimize() : openTerminal();
     };
-    window.addEventListener("popstate", sync);
-    window.addEventListener("hashchange", sync);
+    window.addEventListener("hashchange", onHash);
     window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener("popstate", sync);
-      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("hashchange", onHash);
       window.removeEventListener("keydown", onKey);
     };
   });
 </script>
 
-{#if view === "terminal"}
-  <div class="wrap">
-    <div class="term-top">
-      <button type="button" class="btn ghost sm" onclick={() => show("page")}>← Back to the page</button>
-      <span class="muted small">Press <kbd>`</kbd> to switch views</span>
-    </div>
-    <div class="grid">
-      <Terminal bind:this={terminal} />
-      <Rail onrun={(cmd) => terminal?.run(cmd)} />
-    </div>
-    <p class="foot">{config.name} · {config.handle} · {config.location}</p>
-  </div>
-{:else}
-  <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-  <div class="home" onclick={handleClick}>
-    {@html home}
+<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+<div class="home" onclick={handlePageClick}>
+  {@html home}
+</div>
+
+{#if win !== "closed"}
+  <div
+    class="window"
+    class:maximized
+    class:hidden={win === "min"}
+    role="dialog"
+    aria-label="Terminal"
+    aria-hidden={win === "min"}
+    bind:this={winEl}
+    style="--dx: {pos.x}px; --dy: {pos.y}px"
+  >
+    <Terminal
+      bind:this={terminal}
+      onclose={close}
+      onminimize={minimize}
+      onmaximize={toggleMax}
+      ondragstart={dragStart}
+      {maximized}
+    >
+      {#snippet aside()}
+        <Rail onrun={(cmd) => terminal?.run(cmd)} />
+      {/snippet}
+    </Terminal>
   </div>
 {/if}
+
+<button
+  type="button"
+  class="launcher"
+  class:running={win !== "closed"}
+  class:active={win === "open"}
+  aria-label={win === "min" ? "Restore terminal" : "Open terminal"}
+  title="Terminal ( ` )"
+  onclick={() => (win === "open" ? minimize() : openTerminal())}
+>
+  <span aria-hidden="true">&gt;_</span>
+</button>

@@ -3,6 +3,9 @@
   import { config } from "../lib/config.js";
   import { createShell, CHIPS } from "../lib/commands.js";
 
+  // Window chrome is driven by the parent (App.svelte); all optional.
+  let { onclose, onminimize, onmaximize, ondragstart, maximized = false, aside } = $props();
+
   let blocks = $state([]);
   let value = $state("");
   let screenEl;
@@ -35,14 +38,21 @@
     blocks.length = 0;
   }
 
-  const shell = createShell(config, { print, clear, reduce });
+  const shell = createShell(config, { print, clear, reduce, exit: onclose ? () => onclose() : undefined });
 
   export function run(cmd) {
     shell.run(cmd);
     if (finePointer()) inputEl?.focus();
   }
 
-  onMount(() => shell.boot());
+  export function focus() {
+    if (finePointer()) inputEl?.focus();
+  }
+
+  onMount(() => {
+    shell.boot();
+    focus();
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -99,11 +109,19 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
 <section class="term" aria-label="Interactive terminal" onclick={handleClick}>
-  <div class="bar">
-    <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div class="bar" onpointerdown={ondragstart} ondblclick={() => onmaximize?.()}>
+    <div class="dots">
+      <button type="button" class="dot close" aria-label="Close terminal" title="Close" onclick={() => onclose?.()}></button>
+      <button type="button" class="dot min" aria-label="Minimize terminal" title="Minimize" onclick={() => onminimize?.()}></button>
+      <button type="button" class="dot max" aria-label={maximized ? "Restore window size" : "Maximize terminal"} title={maximized ? "Restore" : "Maximize"} onclick={() => onmaximize?.()}></button>
+    </div>
     <div class="path">{shell.user}: ~</div>
     <div aria-hidden="true">zsh</div>
   </div>
+
+  <div class="term-body">
+  <div class="term-main">
 
   <div class="screen" bind:this={screenEl} aria-live="polite">
     {#each blocks as block (block.id)}
@@ -130,5 +148,11 @@
     {#each CHIPS as [cmd, hot]}
       <button type="button" class="chip" class:hot data-run={cmd}>{cmd}</button>
     {/each}
+  </div>
+  </div>
+
+  {#if aside}
+    <div class="term-side">{@render aside()}</div>
+  {/if}
   </div>
 </section>
