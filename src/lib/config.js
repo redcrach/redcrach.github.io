@@ -214,8 +214,7 @@ export const config = {
     ["100K", "requests a day", "client storefront platform · near-zero hosting cost"],
     ["6–10", "developers led as CTO", "ZimouGroup 2023–2026 · daily PR reviews across 2–3 repos"],
     ["Since 2012", "in production", "PHP since 2012, web security since 2011"],
-    // TODO: add your best SingleStore / TimescaleDB number here, e.g.
-    // ["12s → 0.4s", "dashboard aggregation", "SingleStore at Caliber"],
+    ["45s → 2.1s", "dashboard aggregation", "SingleStore at Caliber"],
   ],
 
   skillCards: [
@@ -275,8 +274,7 @@ export const config = {
     ["Engagement", "Full-time, remote, as a B2B contractor"],
     ["Hours", "Full overlap with EU working hours, from UTC+1"],
     ["Start", "Within 2 weeks"],
-    // TODO: replace with the real payment method, then drop the `todo` flag.
-    ["Invoicing", "Through [PAYMENT METHOD – TODO]", "todo"],
+    ["Invoicing", "Through Deel or your own contractor platform. Wise, Payoneer or Grey also work."],
   ],
 
   ctf: {

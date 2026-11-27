@@ -337,7 +337,6 @@ details[open] summary { margin-bottom: 8px; }
 .terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 0; }
 .terms dt { color: var(--dim); font-size: var(--step--1); }
 .terms dd { margin: 0; }
-.terms .todo { color: var(--warn); }
 
 .final { text-align: center; padding-bottom: 48px; }
 .final .muted { max-width: 56ch; margin: 0 auto 22px; }

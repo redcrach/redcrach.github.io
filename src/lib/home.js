@@ -185,7 +185,7 @@ export function renderHome(cfg) {
     <h2>How we'd work</h2>
     <dl class="terms">
       ${cfg.terms
-        .map(([k, v, flag]) => `<div class="card"><dt>${esc(k)}</dt><dd${flag === "todo" ? ' class="todo"' : ""}>${esc(v)}</dd></div>`)
+        .map(([k, v]) => `<div class="card"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
         .join("")}
     </dl>
   </section>`;
