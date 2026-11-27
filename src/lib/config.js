@@ -30,6 +30,7 @@ export const config = {
 
   email: "hafid@taibouni.dev",
   telegram: "redcrach",
+  whatsapp: "redcrach", // username only: WhatsApp has no public link for usernames. The hero assumes it matches `telegram`.
   links: {
     GitHub: "https://github.com/redcrach",
     LinkedIn: "https://www.linkedin.com/in/taibouni-abdel-hafid/",

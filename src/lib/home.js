@@ -23,7 +23,7 @@ export function renderHome(cfg) {
       <div><dt>Now</dt><dd>${esc(now[1])}, ${esc(company(now[2]))} <span class="muted when">· ${esc(now[0])}</span></dd></div>
       <div><dt>Before</dt><dd>${esc(before[1])}, ${esc(company(before[2]))} <span class="muted when">· ${esc(before[0])}</span></dd></div>
       <div><dt>Based in</dt><dd>${esc(cfg.location)}</dd></div>
-      <div><dt>Contact</dt><dd><a href="mailto:${esc(cfg.email)}">${esc(cfg.email)}</a> · <a href="https://t.me/${esc(cfg.telegram)}" target="_blank" rel="noopener">Telegram @${esc(cfg.telegram)}</a></dd></div>
+      <div><dt>Contact</dt><dd><a href="mailto:${esc(cfg.email)}">${esc(cfg.email)}</a> · <a href="https://t.me/${esc(cfg.telegram)}" target="_blank" rel="noopener">Telegram</a> / WhatsApp @${esc(cfg.telegram)}</dd></div>
     </dl>`;
   const term = `<button type="button" class="linkish" data-view="terminal">or open the terminal <kbd>\`</kbd></button>`;
 

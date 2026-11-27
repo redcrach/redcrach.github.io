@@ -268,6 +268,7 @@ export function createShell(cfg, io) {
       run: () => `<dl class="kv">
         <dt>email</dt><dd><span class="sel">${esc(cfg.email)}</span><button class="copy" type="button" data-copy="${esc(cfg.email)}">copy</button></dd>
         ${Object.entries(cfg.links).map(([k, v]) => `<dt>${esc(k.toLowerCase())}</dt><dd>${link(v)}</dd>`).join("")}
+        ${cfg.whatsapp ? `<dt>whatsapp</dt><dd><span class="sel">@${esc(cfg.whatsapp)}</span></dd>` : ""}
         ${cfg.cv ? `<dt>cv</dt><dd><a href="${esc(cfg.cv)}" download>Download CV (PDF)</a></dd>` : ""}
         </dl>
         <p>Have a codebase that's fighting you, or an idea that needs to be built properly? Send me the details and I'll tell you honestly what I'd tackle first. A short call is usually enough to scope it.</p>`,
