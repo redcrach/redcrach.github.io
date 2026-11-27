@@ -15,7 +15,7 @@ export const config = {
   since: 2011, // web security
   productionSince: 2012, // first paid production work (freelance)
   available: "Open to full-time remote contract work",
-  availableNote: "as a B2B contractor · currently part-time at Group Caliber",
+  availableNote: "B2B contractor · currently part-time at Group Caliber",
   languages: "Arabic (native) · English (fluent, daily at work) · French & German (basic)",
 
   summary:
@@ -29,10 +29,12 @@ export const config = {
   },
 
   email: "hafid@taibouni.dev",
+  telegram: "redcrach",
   links: {
     GitHub: "https://github.com/redcrach",
     LinkedIn: "https://www.linkedin.com/in/taibouni-abdel-hafid/",
     Upwork: "https://www.upwork.com/freelancers/~017f211aaf6fc6695a",
+    Telegram: "https://t.me/redcrach",
     "Root-Me": "https://www.root-me.org/RedCrach",
     "2012 CTF write-ups (French)": "https://blindp0wn3rs.wordpress.com/",
   },

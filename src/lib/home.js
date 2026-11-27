@@ -15,6 +15,16 @@ export function renderHome(cfg) {
     : "";
   const mail = `<a class="btn ghost" href="mailto:${esc(cfg.email)}">Email me</a>`;
   const cv = cfg.cv ? `<a class="btn ghost" href="${esc(cfg.cv)}" download>Download CV (PDF)</a>` : "";
+  // Plain-HTML summary in the first screen, so recruiters get the facts without the terminal.
+  const [now, before] = cfg.experience;
+  const company = (org) => org.split(" · ")[0];
+  const glance = `
+    <dl class="glance">
+      <div><dt>Now</dt><dd>${esc(now[1])}, ${esc(company(now[2]))} <span class="muted when">· ${esc(now[0])}</span></dd></div>
+      <div><dt>Before</dt><dd>${esc(before[1])}, ${esc(company(before[2]))} <span class="muted when">· ${esc(before[0])}</span></dd></div>
+      <div><dt>Based in</dt><dd>${esc(cfg.location)}</dd></div>
+      <div><dt>Contact</dt><dd><a href="mailto:${esc(cfg.email)}">${esc(cfg.email)}</a> · <a href="https://t.me/${esc(cfg.telegram)}" target="_blank" rel="noopener">Telegram @${esc(cfg.telegram)}</a></dd></div>
+    </dl>`;
   const term = `<button type="button" class="linkish" data-view="terminal">or open the terminal <kbd>\`</kbd></button>`;
 
   const nav = `
@@ -41,9 +51,9 @@ export function renderHome(cfg) {
     <ul class="badges">
       <li><span class="led"></span>${esc(cfg.available)}</li>
       <li>In production since ${esc(cfg.productionSince)}</li>
-      <li>${esc(cfg.location)}</li>
       <li>${esc(cfg.upwork.badge)} on Upwork · ${esc(cfg.upwork.jobs)} jobs · ${esc(cfg.upwork.earned)}</li>
     </ul>
+    ${glance}
     <div class="actions">${call}${mail}${cv}${term}</div>
   </section>`;
 
@@ -92,7 +102,7 @@ export function renderHome(cfg) {
         .map(
           (p, i) => `
         <article class="card case" id="${esc(p.id)}">
-          <p class="case-n">${String(i + 1).padStart(2, "0")}</p>
+          <p class="case-n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</p>
           <h3>${esc(p.title)}</h3>
           <p class="case-client">${esc(p.client)}</p>
           <ul class="results">${p.result.map((r) => `<li>${esc(r)}</li>`).join("")}</ul>
