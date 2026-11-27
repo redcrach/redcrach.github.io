@@ -274,7 +274,7 @@ export const config = {
     ["Engagement", "Full-time, remote, as a B2B contractor"],
     ["Hours", "Full overlap with EU working hours, from UTC+1"],
     ["Start", "Within 2 weeks"],
-    ["Invoicing", "Through Deel or your own contractor platform. Wise, Payoneer or Grey also work."],
+    ["Invoicing", "In EUR or USD, through Deel or your own contractor platform. Wise, Payoneer or Grey also work."],
   ],
 
   ctf: {
