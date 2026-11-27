@@ -39,7 +39,7 @@ export function renderHome(cfg) {
     <p class="hero-role">${esc(cfg.role)}</p>
     <p class="hero-lede">${esc(cfg.tagline)}</p>
     <ul class="badges">
-      <li><span class="led"></span>Available now</li>
+      <li><span class="led"></span>${esc(cfg.available)}</li>
       <li>In production since ${esc(cfg.productionSince)}</li>
       <li>${esc(cfg.location)}</li>
       <li>${esc(cfg.upwork.badge)} on Upwork · ${esc(cfg.upwork.jobs)} jobs · ${esc(cfg.upwork.earned)}</li>

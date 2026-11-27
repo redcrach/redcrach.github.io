@@ -75,7 +75,7 @@ export function createShell(cfg, io) {
           <dt>experience</dt><dd>in production since ${cfg.productionSince} · web security since ${cfg.since}</dd>
           <dt>upwork</dt><dd><span class="ok">${esc(cfg.upwork.badge)}</span> · ${cfg.upwork.jobs} jobs · ${cfg.upwork.reviews} reviews · ${esc(cfg.upwork.earned)} earned</dd>
           <dt>languages</dt><dd>${esc(cfg.languages)}</dd>
-          <dt>available</dt><dd class="ok">${esc(cfg.available)}</dd>
+          <dt>available</dt><dd><span class="ok">${esc(cfg.available)}</span> <span class="muted">${esc(cfg.availableNote)}</span></dd>
         </dl>`,
     },
 

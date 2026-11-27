@@ -14,7 +14,8 @@ export const config = {
   location: "Algiers, Algeria · Remote, EU hours (UTC+1)",
   since: 2011, // web security
   productionSince: 2012, // first paid production work (freelance)
-  available: "Yes, taking new projects (30+ hrs/week)",
+  available: "Open to full-time remote contract work",
+  availableNote: "as a B2B contractor · currently part-time at Group Caliber",
   languages: "Arabic (native) · English (fluent, daily at work) · French & German (basic)",
 
   summary:
@@ -90,7 +91,7 @@ export const config = {
     {
       id: "caliber-rescue",
       title: "Rescuing a legacy SaaS, then rebuilding it as v2",
-      client: "Group Caliber ApS · Danish brand & reputation tracking SaaS · Oct 2021 – Oct 2026",
+      client: "Group Caliber ApS · Danish brand & reputation tracking SaaS · Oct 2021 – present",
       problem:
         "A native-PHP backend had become too slow to use. At its core sat a 10,000-line, 22-parameter function that only its original author could change.",
       did:
@@ -189,10 +190,10 @@ export const config = {
   ],
 
   experience: [
-    ["Oct 2021 – Oct 2026", "Senior Full-Stack Developer (Laravel & Svelte)", "Group Caliber ApS · remote, Denmark", "Legacy rescue, v2 rebuild, ~70% faster survey engine"],
-    ["Sep 2023 – Jul 2026", "Chief Technology Officer & Shareholder", "ZimouGroup · remote", "Hands-on Laravel lead: cockpit, queues, ZimouExpress, storefronts, hiring and mentoring. Occasional consultant since."],
-    ["Feb 2018 – Aug 2021", "Co-Founder, Head Developer & SysAdmin", "Orestor · Algeria", "Shopify-like platform, custom MVC framework, zero-touch deployment"],
-    ["Feb 2012 – Aug 2018", "Freelance Full-Stack Developer", "Clients incl. Katy Computer Specialists", "PHP apps, databases for high-traffic lead-gen platforms, hardening and tuning"],
+    ["Oct 2021 – present · part-time", "Senior Full-Stack Developer (Laravel & Svelte)", "Group Caliber ApS · Remote, Denmark", "Legacy rescue, v2 rebuild, ~70% faster survey engine. Via Upwork until Oct 2026, direct part-time contract since."],
+    ["Sep 2023 – Jul 2026", "Chief Technology Officer & Shareholder", "ZimouGroup · remote", "Led a team of 6–10 developers and oversaw all of IT. Hands-on Laravel lead: cockpit, queues, ZimouExpress, storefronts, hiring and mentoring."],
+    ["Feb 2018 – Aug 2021", "Co-Founder, Head Developer & SysAdmin", "Orestor · Algeria", "Shopify-like platform, custom MVC framework, zero-touch deployment. Later became part of ZimouGroup."],
+    ["Feb 2012 – Aug 2018", "Full-Stack Developer", "Freelance · clients incl. Katy Computer Specialists", "PHP apps, databases for high-traffic lead-gen platforms, hardening and tuning"],
     ["2011 – 2012", "CTF player & challenge author", "Root-Me · Blindp0wn3rs", "Authored 3 realist challenges, published CTF write-ups"],
   ],
 
@@ -259,8 +260,8 @@ export const config = {
   },
 
   faq: [
-    ["Where are you based, and what hours do you work?", "Algeria, UTC+1, aligned with CET. I spent five years inside a Denmark-based team on CET hours, fully remote."],
-    ["Full-time or contract?", "Both. I'm open to full-time remote roles and to contract work, from a short audit to owning a product's backend."],
+    ["Where are you based, and what hours do you work?", "Algiers, Algeria, UTC+1, with full overlap with EU working hours. I've spent five years inside a Denmark-based team on CET hours, fully remote."],
+    ["Full-time or contract?", "A full-time remote role, as a B2B contractor. I'm part-time at Group Caliber right now, so I have room for it and can start within 2 weeks."],
     ["How do you take over a codebase you didn't write?", "Read it the way an attacker would: config, secrets, auth, queries, uploads, servers. Then fix what's dangerous first and refactor in small steps that ship, so the business never stops. Type audit in the terminal for my checklist."],
     ["How do you use AI in your work?", "I use Claude Code every day. Everything it writes gets reviewed and tested by me before it ships."],
     ["Why is there a terminal?", "I started in security and CTFs in 2011, and old habits stay. There's also a hidden flag in there for the curious."],

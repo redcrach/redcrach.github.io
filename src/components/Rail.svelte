@@ -7,7 +7,7 @@
 <aside class="rail" aria-label="Track record">
   <div class="card">
     <p class="h">Track record</p>
-    <div class="stat"><span class="k">status</span><span class="ok"><span class="led"></span>available</span></div>
+    <div class="stat"><span class="k">status</span><span class="ok"><span class="led"></span>open to work</span></div>
     <div class="stat"><span class="k">upwork</span><span class="pill ok">{config.upwork.badge}</span></div>
     <div class="stat"><span class="k">earned</span><span>{config.upwork.earned}</span></div>
     <div class="stat"><span class="k">jobs · reviews</span><span>{config.upwork.jobs} · {config.upwork.reviews}</span></div>
