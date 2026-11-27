@@ -14,7 +14,7 @@ export function renderHome(cfg) {
     ? `<a class="btn" href="${esc(cfg.booking)}" target="_blank" rel="noopener">Book a 30-min call</a>`
     : "";
   const mail = `<a class="btn ghost" href="mailto:${esc(cfg.email)}">Email me</a>`;
-  const cv = cfg.cv ? `<a class="btn ghost" href="${esc(cfg.cv)}" download>Download CV</a>` : "";
+  const cv = cfg.cv ? `<a class="btn ghost" href="${esc(cfg.cv)}" download>Download CV (PDF)</a>` : "";
   const term = `<button type="button" class="linkish" data-view="terminal">or open the terminal <kbd>\`</kbd></button>`;
 
   const nav = `
@@ -185,7 +185,7 @@ export function renderHome(cfg) {
     ${label("sudo hire-me")}
     <h2>Have a codebase that's fighting you?</h2>
     <p class="muted">Architecture, code, data, servers and security, owned by one person. A 30-minute call is enough to tell whether I can help.</p>
-    <div class="actions">${call}${mail}</div>
+    <div class="actions">${call}${mail}${cv}</div>
   </section>`;
 
   const links = Object.entries(cfg.links)

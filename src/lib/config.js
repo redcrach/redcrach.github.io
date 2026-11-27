@@ -9,8 +9,8 @@ export const config = {
   tagline: "I turn slow legacy systems into fast, safe ones.",
   // Every "Book a call" button points here.
   booking: "https://calendar.app.google/KDbTzS8DJP4iwWpV7",
-  // Optional: drop a PDF in /public (e.g. public/cv.pdf) and set "./cv.pdf" to show a CV button.
-  cv: "",
+  // The PDF lives at public/cv.pdf and is served at /cv.pdf. Set to "" to hide the CV buttons.
+  cv: "/cv.pdf",
   location: "Algiers, Algeria · Remote, EU hours (UTC+1)",
   since: 2011, // web security
   productionSince: 2012, // first paid production work (freelance)
