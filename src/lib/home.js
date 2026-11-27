@@ -128,10 +128,10 @@ export function renderHome(cfg) {
     <div class="quotes">
       ${cfg.reviews
         .map(
-          ([who, text]) => `
-        <figure class="card quote">
+          ([who, text, flag]) => `
+        <figure class="card quote${flag === "minor" ? " minor" : ""}">
           <blockquote>${esc(text)}</blockquote>
-          <figcaption>${esc(who)} · Upwork</figcaption>
+          <figcaption>${esc(who)}</figcaption>
         </figure>`
         )
         .join("")}

@@ -205,7 +205,7 @@ export function createShell(cfg, io) {
       d: "where I learned to break things",
       run: () => {
         const prof = Object.entries(cfg.links)
-          .filter(([k]) => /root-me|wechall|blog/i.test(k))
+          .filter(([k]) => /root-me|wechall|ctf/i.test(k))
           .map(([k, v]) => `<dt>${esc(k.toLowerCase())}</dt><dd>${link(v)}</dd>`)
           .join("");
         const authored = cfg.ctf.authored
@@ -221,10 +221,10 @@ export function createShell(cfg, io) {
     },
 
     writeups: {
-      d: "CTF write-ups from my Blindp0wn3rs blog (2012)",
+      d: "CTF write-ups from my Blindp0wn3rs blog (2012, in French)",
       run: () => {
         const b = cfg.ctf.blog;
-        return `<p>${link(b.url, b.name)} <span class="muted">· ${esc(b.tagline)}</span></p>
+        return `<p>${link(b.url, b.name)} <span class="muted">· ${esc(b.tagline)} · 2012, in French</span></p>
           <dl class="kv">${cfg.ctf.writeups
             .map(([ev, ch, note]) => `<dt>${esc(ch)}</dt><dd>${esc(note)}<br><span class="muted">${esc(ev)}</span></dd>`)
             .join("")}</dl>
@@ -236,7 +236,7 @@ export function createShell(cfg, io) {
       d: "what clients say",
       run: () =>
         cfg.reviews
-          .map(([who, text]) => `<div class="proj"><div>“${esc(text)}”</div><div class="muted">— ${esc(who)}</div></div>`)
+          .map(([who, text, flag]) => `<div class="proj${flag === "minor" ? " muted" : ""}"><div>“${esc(text)}”</div><div class="muted">— ${esc(who)}</div></div>`)
           .join("") +
         `<p class="muted">${esc(cfg.upwork.badge)} on Upwork · ${cfg.upwork.jobs} jobs · ${cfg.upwork.reviews} reviews · ${esc(cfg.upwork.earned)} earned</p>`,
     },

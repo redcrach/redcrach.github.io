@@ -34,7 +34,7 @@ export const config = {
     LinkedIn: "https://www.linkedin.com/in/taibouni-abdel-hafid/",
     Upwork: "https://www.upwork.com/freelancers/~017f211aaf6fc6695a",
     "Root-Me": "https://www.root-me.org/RedCrach",
-    Blog: "https://blindp0wn3rs.wordpress.com/",
+    "2012 CTF write-ups (French)": "https://blindp0wn3rs.wordpress.com/",
   },
 
   skills: {
@@ -198,18 +198,19 @@ export const config = {
   ],
 
   reviews: [
-    ["Henrik B., client", "Hafid is very skilled in PHP, backend development and Laravel. He tackles tasks with a great attitude and mind set. He helped us refactor and optimize on an existing PHP backend, and not only did he do the tasks appointed, he also identified other areas to improve on both security, performance and maintainability."],
-    ["Client", "Taibouni was enormously helpful to us in uncovering issues in our setup and code and assisted us onto the right path to resolution. He was professional and courteous at all times and his experience was evident in the final work!"],
+    ["Henrik B., client · Upwork", "Hafid is very skilled in PHP, backend development and Laravel. He tackles tasks with a great attitude and mind set. He helped us refactor and optimize on an existing PHP backend, and not only did he do the tasks appointed, he also identified other areas to improve on both security, performance and maintainability."],
+    // Unsigned on Upwork, so it's labelled as such and shown smaller.
+    ["Upwork client review", "Taibouni was enormously helpful to us in uncovering issues in our setup and code and assisted us onto the right path to resolution. He was professional and courteous at all times and his experience was evident in the final work!", "minor"],
   ],
 
   // ── Page-only content (the scroll view). The terminal ignores these. ──
 
   stats: [
-    ["~70%", "faster legacy survey engine", "35s → 11s at Group Caliber"],
-    ["130 → 32", "database queries per request", "grouped lookups, upserts, caching"],
-    ["100%", "uptime on ZimouExpress", "1,000+ parcels a day across Algeria"],
-    ["100K", "storefront requests a day", "at near-zero hosting cost"],
-    ["6–10", "developers led as CTO", "daily PR reviews across 2–3 repos"],
+    ["~70%", "faster legacy survey engine", "Group Caliber · 35s → 11s, 15s → 4.5s"],
+    ["130 → 32", "database queries per request", "Group Caliber · grouped lookups, upserts, caching"],
+    ["100%", "uptime", "ZimouExpress 2023–2026 · 1,000+ parcels a day"],
+    ["100K", "requests a day", "client storefront platform · near-zero hosting cost"],
+    ["6–10", "developers led as CTO", "ZimouGroup 2023–2026 · daily PR reviews across 2–3 repos"],
     ["Since 2012", "in production", "PHP since 2012, web security since 2011"],
     // TODO: add your best SingleStore / TimescaleDB number here, e.g.
     // ["12s → 0.4s", "dashboard aggregation", "SingleStore at Caliber"],
