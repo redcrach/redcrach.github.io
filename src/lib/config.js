@@ -267,6 +267,15 @@ export const config = {
     ["Why is there a terminal?", "I started in security and CTFs in 2011, and old habits stay. There's also a hidden flag in there for the curious."],
   ],
 
+  // "How we'd work" block, between the FAQ and the closing call to action. No prices.
+  terms: [
+    ["Engagement", "Full-time, remote, as a B2B contractor"],
+    ["Hours", "Full overlap with EU working hours, from UTC+1"],
+    ["Start", "Within 2 weeks"],
+    // TODO: replace with the real payment method, then drop the `todo` flag.
+    ["Invoicing", "Through [PAYMENT METHOD – TODO]", "todo"],
+  ],
+
   ctf: {
     authored: [
       { name: "Web TV", url: "https://www.root-me.org/fr/Challenges/Realiste/Web-TV" },

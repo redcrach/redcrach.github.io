@@ -308,6 +308,11 @@ details[open] summary { margin-bottom: 8px; }
 .faq summary:hover { color: var(--amber); text-decoration: none; }
 .faq p { color: var(--dim); margin: 0; }
 
+.terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 0; max-width: 80ch; }
+.terms dt { color: var(--dim); font-size: var(--step--1); }
+.terms dd { margin: 0; }
+.terms .todo { color: var(--warn); }
+
 .final { text-align: center; padding-bottom: 48px; }
 .final .muted { max-width: 56ch; margin: 0 auto 22px; }
 .final .actions { justify-content: center; }

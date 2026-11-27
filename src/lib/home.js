@@ -169,6 +169,17 @@ export function renderHome(cfg) {
     </div>
   </section>`;
 
+  const terms = `
+  <section id="terms" class="sec">
+    ${label("cat terms.txt")}
+    <h2>How we'd work</h2>
+    <dl class="terms">
+      ${cfg.terms
+        .map(([k, v, flag]) => `<div class="card"><dt>${esc(k)}</dt><dd${flag === "todo" ? ' class="todo"' : ""}>${esc(v)}</dd></div>`)
+        .join("")}
+    </dl>
+  </section>`;
+
   const cta = `
   <section class="sec final">
     ${label("sudo hire-me")}
@@ -187,5 +198,5 @@ export function renderHome(cfg) {
     <p class="muted small">${esc(cfg.name)} · ${esc(cfg.handle)} · Svelte 5 · Vite · GitHub Pages · <button type="button" class="linkish" data-view="terminal">open the terminal</button></p>
   </footer>`;
 
-  return `${nav}<main class="page">${hero}${stats}${skills}${work}${incident}${reviews}${exp}${faq}${cta}</main>${footer}`;
+  return `${nav}<main class="page">${hero}${stats}${skills}${work}${incident}${reviews}${exp}${faq}${terms}${cta}</main>${footer}`;
 }
