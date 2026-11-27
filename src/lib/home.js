@@ -10,7 +10,6 @@ const tags = (list) => `<ul class="tags">${list.map((t) => `<li>${esc(t)}</li>`)
 const label = (cmd) => `<p class="label"><span aria-hidden="true">&gt;</span> ${esc(cmd)}<span class="cursor" aria-hidden="true">_</span></p>`;
 
 export function renderHome(cfg) {
-  const years = new Date().getFullYear() - cfg.since;
   const call = cfg.booking
     ? `<a class="btn" href="${esc(cfg.booking)}" target="_blank" rel="noopener">Book a 30-min call</a>`
     : "";
@@ -41,7 +40,7 @@ export function renderHome(cfg) {
     <p class="hero-lede">${esc(cfg.tagline)}</p>
     <ul class="badges">
       <li><span class="led"></span>Available now</li>
-      <li>${years}+ years in production</li>
+      <li>In production since ${esc(cfg.productionSince)}</li>
       <li>${esc(cfg.location)}</li>
       <li>${esc(cfg.upwork.badge)} on Upwork · ${esc(cfg.upwork.jobs)} jobs · ${esc(cfg.upwork.earned)}</li>
     </ul>

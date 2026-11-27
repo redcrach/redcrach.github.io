@@ -4,21 +4,21 @@
 export const config = {
   name: "Taibouni Abdel Hafid",
   handle: "redcrach",
-  role: "Senior Full-Stack Engineer · Laravel & PHP · Vue · Databases · DevOps",
+  role: "Senior Backend Engineer · PHP, Laravel & JavaScript · Ex-CTO",
   // One line under the name on the page. Plain words, no jargon.
-  tagline:
-    "I rescue slow legacy PHP, rebuild it in Laravel, and own everything around it: the Vue and Svelte front ends, the databases, and the servers they run on.",
+  tagline: "I turn slow legacy systems into fast, safe ones.",
   // Every "Book a call" button points here.
   booking: "https://calendar.app.google/KDbTzS8DJP4iwWpV7",
   // Optional: drop a PDF in /public (e.g. public/cv.pdf) and set "./cv.pdf" to show a CV button.
   cv: "",
-  location: "Remote from Algeria · UTC+1, CET-aligned",
-  since: 2011,
+  location: "Algiers, Algeria · Remote, EU hours (UTC+1)",
+  since: 2011, // web security
+  productionSince: 2012, // first paid production work (freelance)
   available: "Yes, taking new projects (30+ hrs/week)",
   languages: "Arabic (native) · English (fluent, daily at work) · French & German (basic)",
 
   summary:
-    "Senior Fullstack developer and PHP backend engineer with 15+ years in production. My specialty is legacy PHP modernization: I dig into unfamiliar codebases with a security researcher's mindset, find out how they really work, then refactor them into clean Laravel step by step without stopping the business. Lately that has meant going deep on data: SingleStore and PostgreSQL with TimescaleDB for heavy analytics, plus Vue 3 on the front end. I also own the infrastructure: Docker, Forge, Cloudflare, Linux, monitoring and backups.",
+    "Senior Backend Engineer (PHP, Laravel & JavaScript) and former CTO, in production since 2012. I turn slow legacy systems into fast, safe ones: I dig into unfamiliar codebases with a security researcher's mindset, find out how they really work, then refactor them into clean Laravel step by step without stopping the business. I go deep on data (MySQL, SingleStore, PostgreSQL with TimescaleDB) and own the infrastructure: Docker, Forge, Cloudflare, Linux, monitoring and backups.",
 
   upwork: {
     badge: "Top Rated",
@@ -48,7 +48,7 @@ export const config = {
       ["TALL stack", 5, "Tailwind, Alpine.js, Laravel, Livewire"],
       ["Svelte", 4, "Caliber v2 front end, this site"],
       ["Next.js", 4, "storefront platform at 100K requests/day"],
-      ["Vue 3", 4, "current focus: components, reactivity, state; Vue 2 shipped earlier"],
+      ["Vue 3", 4, "components, reactivity, state; Vue 2 shipped earlier"],
       ["Blade & JavaScript", 5, ""],
     ],
     data: [
@@ -209,7 +209,7 @@ export const config = {
     ["100%", "uptime on ZimouExpress", "1,000+ parcels a day across Algeria"],
     ["100K", "storefront requests a day", "at near-zero hosting cost"],
     ["6–10", "developers led as CTO", "daily PR reviews across 2–3 repos"],
-    ["15+", "years in production", "PHP since 2012, security since 2011"],
+    ["Since 2012", "in production", "PHP since 2012, web security since 2011"],
     // TODO: add your best SingleStore / TimescaleDB number here, e.g.
     // ["12s → 0.4s", "dashboard aggregation", "SingleStore at Caliber"],
   ],
@@ -222,7 +222,7 @@ export const config = {
     },
     {
       title: "Frontend",
-      text: "Vue 3 is my current focus, next to Svelte (Caliber v2, this site) and React/Next.js (storefronts).",
+      text: "Svelte (Caliber v2, this site), React/Next.js (storefronts), Vue and Alpine.js on top of Laravel back ends.",
       tags: ["Vue 3", "Svelte 5", "React / Next.js", "Alpine.js", "Tailwind", "Drag & drop UIs"],
     },
     {

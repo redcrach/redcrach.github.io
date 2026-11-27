@@ -2,7 +2,6 @@
   import { config } from "../lib/config.js";
 
   let { onrun } = $props();
-  const years = new Date().getFullYear() - config.since;
 </script>
 
 <aside class="rail" aria-label="Track record">
@@ -12,7 +11,7 @@
     <div class="stat"><span class="k">upwork</span><span class="pill ok">{config.upwork.badge}</span></div>
     <div class="stat"><span class="k">earned</span><span>{config.upwork.earned}</span></div>
     <div class="stat"><span class="k">jobs · reviews</span><span>{config.upwork.jobs} · {config.upwork.reviews}</span></div>
-    <div class="stat"><span class="k">in the field</span><span>{config.since} · {years}+ yrs</span></div>
+    <div class="stat"><span class="k">in production</span><span>since {config.productionSince}</span></div>
   </div>
 
   <div class="card">

@@ -36,7 +36,6 @@ export function createShell(cfg, io) {
   const history = [];
   let hIdx = 0;
   let busy = false;
-  const years = new Date().getFullYear() - cfg.since;
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, io.reduce ? 0 : ms));
 
@@ -73,7 +72,7 @@ export function createShell(cfg, io) {
         <p>${esc(cfg.summary)}</p>
         <dl class="kv">
           <dt>location</dt><dd>${esc(cfg.location)}</dd>
-          <dt>experience</dt><dd>${years}+ years: web security since ${cfg.since}, production PHP since 2012</dd>
+          <dt>experience</dt><dd>in production since ${cfg.productionSince} · web security since ${cfg.since}</dd>
           <dt>upwork</dt><dd><span class="ok">${esc(cfg.upwork.badge)}</span> · ${cfg.upwork.jobs} jobs · ${cfg.upwork.reviews} reviews · ${esc(cfg.upwork.earned)} earned</dd>
           <dt>languages</dt><dd>${esc(cfg.languages)}</dd>
           <dt>available</dt><dd class="ok">${esc(cfg.available)}</dd>
@@ -257,8 +256,8 @@ export function createShell(cfg, io) {
       d: "neofetch-style summary",
       run: () => `<dl class="kv">
         <dt>user</dt><dd class="amber">${esc(cfg.handle)}</dd>
-        <dt>os</dt><dd>Laravel engineer, Linux native</dd>
-        <dt>uptime</dt><dd>${years}+ years in production</dd>
+        <dt>os</dt><dd>Backend engineer (PHP, Laravel &amp; JavaScript), Linux native</dd>
+        <dt>uptime</dt><dd>in production since ${cfg.productionSince}</dd>
         <dt>packages</dt><dd>${Object.values(cfg.skills).flat().length} skills across ${Object.keys(cfg.skills).length} areas</dd>
         <dt>projects</dt><dd>${cfg.projects.length} case studies → projects</dd>
         <dt>origin</dt><dd>web security & pentesting</dd></dl>`,
